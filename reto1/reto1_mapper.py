@@ -1,9 +1,9 @@
 #!/usr/bin/env python
-"""mapper_1.py"""
+"""reto1_mapper.py"""
 
 import sys
 import re
-#Clase Mapper para el Reto 1 del Laboratorio 1 de Big Data
+#Mapper para el Reto 1 del Laboratorio 1 de Big Data
 
 # input comes from STDIN (standard input)
 for line in sys.stdin:

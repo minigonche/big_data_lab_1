@@ -1,8 +1,9 @@
 #!/usr/bin/env python
-"""reducer_1.py"""
+"""reto1_reducer.py"""
 
 from operator import itemgetter
 import sys
+#Reducer para el Reto 1 del Laboratorio 1 de Big Data
 
 class Stack:
     """Simple Stack (No hay garantia que se tenga numpy)"""
@@ -28,7 +29,7 @@ class Stack:
                     #inserted
                     inserted = True
                     break
-                    
+
             if not inserted:
                 #Adds the element at the end of stack
                 self.values.append(value)

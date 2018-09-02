@@ -1,7 +1,7 @@
 hadoop jar /usr/hdp/3.0.0.0-1634/hadoop-mapreduce/hadoop-streaming.jar \
--file mapper_1.py    -mapper mapper_1.py \
--file reducer_1.py   -reducer reducer_1.py \
--input /datos/noticias2016/* -output /user/bigdata07/output_reto1
+-file mapper.py    -mapper mapper.py \
+-file reducer.py   -reducer reducer.py \
+-input /datos/reuters/* -output /user/bigdata07/word_count
 
 
 hadoop jar WordCountMR-0.0.1-SNAPSHOT.jar uniandes.reuters.job.WordCounter /datos/reuters/* /user/bigdata07/java_output
