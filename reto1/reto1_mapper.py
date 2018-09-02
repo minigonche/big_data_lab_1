@@ -9,7 +9,9 @@ import re
 for line in sys.stdin:
     if('"title"' in line):
         #Extrae el titulo
-        resultado = re.search('"title": "(.*?)"', line)
+        #ajusta las dobles comillas
+        line = line.replace('\\"',"'")
+        resultado = re.search('"title_full": "(.*?)"', line)
         title = resultado.group(1)
         #Cuenta el numero de palabras
         # La funcion str.split() sin argumentos divide en numero

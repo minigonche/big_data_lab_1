@@ -5,3 +5,10 @@ hadoop jar /usr/hdp/3.0.0.0-1634/hadoop-mapreduce/hadoop-streaming.jar \
 
 
 hadoop jar WordCountMR-0.0.1-SNAPSHOT.jar uniandes.reuters.job.WordCounter /datos/reuters/* /user/bigdata07/java_output
+
+
+
+cat noticias2016_small/news_0000001.json noticias2016_small/news_0000002.json noticias2016_small/news_0000003.json noticias2016_small/news_0000004.json noticias2016_small/news_0000005.json noticias2016_small/news_0000006.json noticias2016_small/news_0000007.json noticias2016_small/news_0000008.json noticias2016_small/news_0000009.json noticias2016_small/news_0000010.json noticias2016_small/news_0000011.json noticias2016_small/news_0000012.json noticias2016_small/news_0000013.json noticias2016_small/news_0000014.json noticias2016_small/news_0000015.json | python reto2/reto2_mapper.py | reto2/reto2_reducer.py
+
+
+cat noticias2016_small/news_0000001.json noticias2016_small/news_0000002.json noticias2016_small/news_0000003.json noticias2016_small/news_0000004.json noticias2016_small/news_0000005.json noticias2016_small/news_0000006.json noticias2016_small/news_0000007.json noticias2016_small/news_0000008.json noticias2016_small/news_0000009.json noticias2016_small/news_0000010.json noticias2016_small/news_0000011.json noticias2016_small/news_0000012.json noticias2016_small/news_0000013.json noticias2016_small/news_0000014.json noticias2016_small/news_0000015.json | python reto1/reto1_mapper.py | reto1/reto1_reducer.py

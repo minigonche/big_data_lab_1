@@ -16,24 +16,31 @@ class Stack:
     min_value = -sys.maxint - 1
 
     def insert(self, name, value):
+
         if(value > self.min_value):
-            inserted = False
-            for i in range(len(self.values) - 1):
-                #checks for insertion place
-                if(value >= self.values[i] and value < self.values[i + 1]):
 
-                    #inserts
-                    self.values = self.values[0:(i+1)] + [value] + self.values[(i+1):]
-                    self.names = self.names[0:(i+1)] + [name] + self.names[(i+1):]
+            # Si todavia no se ha llenado la lista
+            if(len(self.values) > 0 and value < self.values[0]):
+                self.values = [value]  + self.values
+                self.names = [name] + self.names
+            else:
+                inserted = False
+                for i in range(len(self.values) - 1):
+                    #checks for insertion place
+                    if(value >= self.values[i] and value < self.values[i + 1]):
 
-                    #inserted
-                    inserted = True
-                    break
+                        #inserts
+                        self.values = self.values[0:(i+1)] + [value] + self.values[(i+1):]
+                        self.names = self.names[0:(i+1)] + [name] + self.names[(i+1):]
 
-            if not inserted:
-                #Adds the element at the end of stack
-                self.values.append(value)
-                self.names.append(name)
+                        #inserted
+                        inserted = True
+                        break
+
+                if not inserted:
+                    #Adds the element at the end of stack
+                    self.values.append(value)
+                    self.names.append(name)
 
             #Keeps maximum size
             #Checks if there are any extra elements
