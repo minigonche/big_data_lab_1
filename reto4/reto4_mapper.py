@@ -20,8 +20,11 @@ for line in sys.stdin:
             print '** línea con contenido **'
             jsonObj = json.loads(line)
             #Se obtiene el título del artículo
-            titulo = jsonObj['text']
+            body = jsonObj['text']
             #Número de palabras del título
-            num = len(titulo.split())
+            num = len(body.split())
             #Se imprime la tupla, titulo, num
             print num
+            # Encuentra las palabras 'Compra Euros' del body
+            search = "Compra Euros"
+            print re.findall(r"\b" + search + r"\b", body)
