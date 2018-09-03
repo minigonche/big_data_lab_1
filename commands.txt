@@ -27,6 +27,12 @@ hadoop jar /usr/hdp/3.0.0.0-1634/hadoop-mapreduce/hadoop-streaming.jar \
 -file reto3_reducer.py   -reducer reto3_reducer.py \
 -input /datos/noticias2016/* -output /user/bigdata07/reto_3
 
+# reto 3 pequenho
+hadoop jar /usr/hdp/3.0.0.0-1634/hadoop-mapreduce/hadoop-streaming.jar \
+-file reto3_mapper.py    -mapper reto3_mapper.py \
+-file reto3_reducer.py   -reducer reto3_reducer.py \
+-input /user/bigdata07/noticias2016_small/* -output /user/bigdata07/reto_3
+
 # reto 4
 hadoop jar /usr/hdp/3.0.0.0-1634/hadoop-mapreduce/hadoop-streaming.jar \
 -file reto4_mapper.py    -mapper reto4_mapper.py \
