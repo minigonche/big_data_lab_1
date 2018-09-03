@@ -17,8 +17,8 @@ for line in sys.stdin:
     line = line.strip()
     if line:
         data = json.loads(line)
-        country = data_j.get('thread').get('country')
-        author = data_j.get('author')
+        country = data.get('thread').get('country')
+        author = data.get('author')
 
         # if there are several authors, join them as a single csv string
         if author.__class__ == list:
