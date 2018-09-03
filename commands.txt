@@ -61,4 +61,8 @@ cat noticias2016_small/news_0000001.json noticias2016_small/news_0000002.json no
 
 
 # reto 4
+#To test locally cahnge of reto4_mapper.py
+# line44 --> end = datetime(2016, 7, 15)  to end = datetime(2016, 10, 15)
+## and
+# line46 --> search = 'Compra Euros' to search = 'paro'
 cat noticias2016_small/news_0000001.json noticias2016_small/news_0000002.json noticias2016_small/news_0000003.json noticias2016_small/news_0000004.json noticias2016_small/news_0000005.json noticias2016_small/news_0000006.json noticias2016_small/news_0000007.json noticias2016_small/news_0000008.json noticias2016_small/news_0000009.json noticias2016_small/news_0000010.json noticias2016_small/news_0000011.json noticias2016_small/news_0000012.json noticias2016_small/news_0000013.json noticias2016_small/news_0000014.json noticias2016_small/news_0000015.json | python reto1/reto1_mapper.py | reto4/reto4_reducer.py
