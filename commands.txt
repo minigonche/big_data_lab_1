@@ -3,10 +3,33 @@
 #Reto 1
 
 # Reto 1 grande
+
+hadoop jar /usr/hdp/3.0.0.0-1634/hadoop-mapreduce/hadoop-streaming.jar \
+-D mapreduce.job.split.metainfo.maxsize=100000000 \
+-D mapreduce.map.memory.mb=5125 \
+-D mapreduce.reduce.memory.mb=5125 \
+-D yarn.app.mapreduce.am.resource.mb=2046 \
+-file reto1_mapper.py    -mapper reto1_mapper.py \
+-file reto1_reducer.py   -reducer reto1_reducer.py \
+-input noticias2016/* -output /user/bigdata07/reto_1 \
+
+
+-D mapred.child.java.opts=-Xmx3072m \
+
+
+
+
+
+#reto 1 mediano
 hadoop jar /usr/hdp/3.0.0.0-1634/hadoop-mapreduce/hadoop-streaming.jar \
 -file reto1_mapper.py    -mapper reto1_mapper.py \
 -file reto1_reducer.py   -reducer reto1_reducer.py \
--input /datos/noticias2016/* -output /user/bigdata07/reto_1
+-input /user/bigdata07/noticias2016_small_2/* -output /user/bigdata07/reto_1_small_2
+
+
+
+
+
 
 # Reto 1 pequenho
 hadoop jar /usr/hdp/3.0.0.0-1634/hadoop-mapreduce/hadoop-streaming.jar \
@@ -20,6 +43,20 @@ hadoop jar /usr/hdp/3.0.0.0-1634/hadoop-mapreduce/hadoop-streaming.jar \
 -file reto2_mapper.py    -mapper reto2_mapper.py \
 -file reto2_reducer.py   -reducer reto2_reducer.py \
 -input /datos/noticias2016/* -output /user/bigdata07/reto_2
+
+
+#reto 2 mediano
+hadoop jar /usr/hdp/3.0.0.0-1634/hadoop-mapreduce/hadoop-streaming.jar \
+-file reto2_mapper.py    -mapper reto2_mapper.py \
+-file reto2_reducer.py   -reducer reto2_reducer.py \
+-input /user/bigdata07/noticias2016_small_2/* -output /user/bigdata07/reto_2_small_2
+
+
+hadoop jar /usr/hdp/3.0.0.0-1634/hadoop-mapreduce/hadoop-streaming.jar \
+-file reto2_mapper.py    -mapper reto2_mapper.py \
+-file reto2_reducer.py   -reducer reto2_reducer.py \
+-input /user/bigdata07/noticias2016_small/* -output /user/bigdata07/reto_2_small
+
 
 # reto 3
 hadoop jar /usr/hdp/3.0.0.0-1634/hadoop-mapreduce/hadoop-streaming.jar \
@@ -38,6 +75,13 @@ hadoop jar /usr/hdp/3.0.0.0-1634/hadoop-mapreduce/hadoop-streaming.jar \
 hadoop jar WordCountMR-0.0.1-SNAPSHOT.jar uniandes.reuters.job.WordCounter /datos/reuters/* /user/bigdata07/java_output
 
 
+# Word count en Python
+hadoop jar /usr/hdp/3.0.0.0-1634/hadoop-mapreduce/hadoop-streaming.jar \
+-file mapper.py    -mapper reto1_mapper.py \
+-file reducer.py   -reducer reto1_reducer.py \
+-input /datos/reuters/* -output /user/bigdata07/word_count_python
+
+
 
 # En console
 
@@ -47,11 +91,13 @@ cat noticias2016_small/news_0000001.json noticias2016_small/news_0000002.json no
 
 
 # reto 1
-cat noticias2016_small/news_0000001.json noticias2016_small/news_0000002.json noticias2016_small/news_0000003.json noticias2016_small/news_0000004.json noticias2016_small/news_0000005.json noticias2016_small/news_0000006.json noticias2016_small/news_0000007.json noticias2016_small/news_0000008.json noticias2016_small/news_0000009.json noticias2016_small/news_0000010.json noticias2016_small/news_0000011.json noticias2016_small/news_0000012.json noticias2016_small/news_0000013.json noticias2016_small/news_0000014.json noticias2016_small/news_0000015.json | python reto1/reto1_mapper.py | reto1/reto1_reducer.py
+cat noticias2016_small/news_0000004.json noticias2016_small/news_0000012.json noticias2016_small/news_0000045.json noticias2016_small/news_0000053.json noticias2016_small/news_0000100.json noticias2016_sample/news_0000116.json | python reto1/reto1_mapper.py | reto1/reto1_reducer.py
+
+cat noticias2016_sample/news_0000004.json noticias2016_sample/news_0000012.json noticias2016_sample/news_0000045.json noticias2016_sample/news_0000053.json noticias2016_sample/news_0000100.json noticias2016_sample/news_0000116.json noticias2016_sample/news_0000141.json noticias2016_sample/news_0000157.json noticias2016_sample/news_0000229.json | python reto1/reto1_mapper.py | reto1/reto1_reducer.py
 
 
 # reto 3
-cat noticias2016_small/news_0000001.json noticias2016_small/news_0000002.json noticias2016_small/news_0000003.json noticias2016_small/news_0000004.json noticias2016_small/news_0000005.json noticias2016_small/news_0000006.json noticias2016_small/news_0000007.json noticias2016_small/news_0000008.json noticias2016_small/news_0000009.json noticias2016_small/news_0000010.json noticias2016_small/news_0000011.json noticias2016_small/news_0000012.json noticias2016_small/news_0000013.json noticias2016_small/news_0000014.json noticias2016_small/news_0000015.json | python reto3/reto3_mapper.py | reto3/reto1_reducer.py
+cat noticias2016_small/news_0000001.json noticias2016_small/news_0000002.json noticias2016_small/news_0000003.json noticias2016_small/news_0000004.json noticias2016_small/news_0000005.json noticias2016_small/news_0000006.json noticias2016_small/news_0000007.json noticias2016_small/news_0000008.json noticias2016_small/news_0000009.json noticias2016_small/news_0000010.json noticias2016_small/news_0000011.json noticias2016_small/news_0000012.json noticias2016_small/news_0000013.json noticias2016_small/news_0000014.json noticias2016_small/news_0000015.json | python reto3/reto3_mapper.py | reto3/reto3_reducer.py
 
 
 # reto 4
