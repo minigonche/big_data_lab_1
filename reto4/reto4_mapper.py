@@ -42,7 +42,7 @@ for line in sys.stdin:
                 start = datetime(2016, 6, 15) #aaaa-mm-dd
                 end = datetime(2016, 10, 15) #aaaa-mm-dd
                 #Palabra a buscar en el body 'Compra Euros'
-                search = 'Compra Euros'#"Compra Euros"
+                search = 'paro'#"Compra Euros"
                 #Archivo dentro del rango de fechas - print "in between"
                 if start <= fecha <= end:
                     #Se obtiene el título del artículo
@@ -54,13 +54,13 @@ for line in sys.stdin:
                     if(len(result)>0):
                         for matchword in result:
                             print '%s\t%s' % (matchword, 1)
-                    else:
-                        print '%s\t%s' % (search, 0)
-                else:
-                    #Imprime la palabra con el valor de cero
-                    #cuando ni siquiera el archivo se publicó 
-                    #en el rango de fechas seleccionadas.
-                    print '%s\t%s' % (search, 0)
+                    # else:
+                    #     print '%s\t%s' % (search, 0)
+                # else:
+                #     #Imprime la palabra con el valor de cero
+                #     #cuando ni siquiera el archivo se publicó 
+                #     #en el rango de fechas seleccionadas.
+                #     print '%s\t%s' % (search, 0)
             except:
                 raise ValueError('Bad UTC offset format: ' + utc_offset)
 
