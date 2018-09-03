@@ -38,11 +38,13 @@ for line in sys.stdin:
                 minutes = int(sign + utc_offset_minutes)
                 fecha = fecha + timedelta(hours=hours)
                 fecha = fecha + timedelta(minutes=minutes)
-                #Fecha de inicio y fin del filtro
+                
+                #Fecha de inicio y fin del filtro según reto4
                 start = datetime(2016, 6, 15) #aaaa-mm-dd
-                end = datetime(2016, 10, 15) #aaaa-mm-dd
+                end = datetime(2016, 7, 15) #aaaa-mm-dd
                 #Palabra a buscar en el body 'Compra Euros'
-                search = 'paro'#"Compra Euros"
+                search = 'Compra Euros'#"Compra Euros"
+                
                 #Archivo dentro del rango de fechas - print "in between"
                 if start <= fecha <= end:
                     #Se obtiene el título del artículo
@@ -54,13 +56,16 @@ for line in sys.stdin:
                     if(len(result)>0):
                         for matchword in result:
                             print '%s\t%s' % (matchword, 1)
-                    # else:
-                    #     print '%s\t%s' % (search, 0)
-                # else:
-                #     #Imprime la palabra con el valor de cero
-                #     #cuando ni siquiera el archivo se publicó 
-                #     #en el rango de fechas seleccionadas.
-                #     print '%s\t%s' % (search, 0)
+                    else:
+                        print '%s\t%s' % (search, 0)
+                else:
+                    #Imprime la palabra con el valor de cero
+                    #cuando ni siquiera el archivo se publicó 
+                    #en el rango de fechas seleccionadas.
+                    # print '%s\t%s' % (search, 0)
+                    
+                    #Continúa ejecución del programa sin imprimir nda
+                    continue
             except:
                 raise ValueError('Bad UTC offset format: ' + utc_offset)
 

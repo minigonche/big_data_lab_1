@@ -6,13 +6,15 @@
 import sys
 
 # input comes from STDIN (standard input)
+item = None
 current_item = None
 current_count = 0
-
+#Lectura del resultado del mapper
 for line in sys.stdin:
     #elimina el salto de línea
     line = line.strip()
     item, count = line.split('\t')
+
     #se convierte el count a un entero
     try:
         count = int(count)
@@ -30,5 +32,6 @@ for line in sys.stdin:
         current_count = count
 #Ultima iteración
 #Se imprimen valores finales del conteo
-if current_item == item:
-    print '%s\t%s' % (current_item, current_count)
+if item:
+    if current_item == item:
+        print '%s\t%s' % (current_item, current_count)
