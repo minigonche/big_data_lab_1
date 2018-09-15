@@ -43,7 +43,7 @@ for line in sys.stdin:
                 start = datetime(2016, 6, 15) #aaaa-mm-dd
                 end = datetime(2016, 7, 15) #aaaa-mm-dd
                 #Palabra a buscar en el body 'Compra Euros'
-                search = 'Compra Euros'#"Compra Euros"
+                search = 'Compra Euros'#"Compra Euros" test
                 
                 #Archivo dentro del rango de fechas - print "in between"
                 if start <= fecha <= end:
