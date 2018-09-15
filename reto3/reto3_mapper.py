@@ -1,28 +1,26 @@
 #!/usr/bin/env python
-"""reto3_mapper.py"""
-#TODO
-'''
-Mapper para el reto 3 del laboratorio 1.
 
-Enunciado:
-Para cada pais en el cual se publican las noticias,
-indique cuantas noticias se publican y ciales so los autores de las noticias
-de ese pais
-'''
-
+"""reto1_mapper.py"""
 import sys
-import json
+import re
+#import json
+#Mapper para el Reto 1 del Laboratorio 1 de Big Data
 
+#input comes from STDIN (standard input)
 for line in sys.stdin:
-    line = line.strip()
-    if line:
-        data = json.loads(line)
-        country = data.get('thread').get('country')
-        author = data.get('author')
+    if('"country"' in line):
+        #Extrae el titulo
+        #ajusta las dobles comillas
+        line = line.replace('\\"',"'")
+        country = re.search('"country": "(.*?)"', line)
+        author = re.search('"author": "(.*?)"', line)
+        country = country.group(1).strip()
+        author = author.group(1).strip()
 
-        # if there are several authors, join them as a single csv string
-        if author.__class__ == list:
-            author = ",".join(author)
+        #if there is no author, add Null
+        if not author:
+            author = ''
 
-        results = [country, author]
-        print("\t".join(results))
+        info = "1," + author
+
+        print('%s\t%s' % (country, info))
